@@ -1,0 +1,36 @@
+Package: epimutacionsShiny
+Title: epimutacionsShiny
+Version: 0.0.0.9000
+Authors@R: person('Xavier', 'Escribà Montagut', email = 'xavier.escriba@isglobal.org', role = c('cre', 'aut'))
+Description: Shiny app for the epimutacions package.
+License: MIT + file LICENSE
+Encoding: UTF-8
+LazyData: true
+RoxygenNote: 7.2.1
+Suggests: 
+    testthat (>= 3.0.0)
+Config/testthat/edition: 3
+Imports: 
+    AnnotationDbi,
+    AnnotationHub,
+    cowplot,
+    ensembldb,
+    epimutacions,
+    epimutacionsData,
+    ExperimentHub,
+    golem,
+    Gviz,
+    Homo.sapiens,
+    IlluminaHumanMethylation450kanno.ilmn12.hg19,
+    IlluminaHumanMethylation450kmanifest,
+    IlluminaHumanMethylationEPICmanifest,
+    minfi,
+    reshape2,
+    Rsamtools,
+    shinycssloaders,
+    shinydashboard,
+    shinyjs,
+    shinyWidgets,
+    TxDb.Hsapiens.UCSC.hg18.knownGene,
+    TxDb.Hsapiens.UCSC.hg19.knownGene,
+    TxDb.Hsapiens.UCSC.hg38.knownGene

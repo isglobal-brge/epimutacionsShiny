@@ -1,0 +1,13 @@
+name: epimutacionsShiny
+title: epimutacionsShiny
+username:
+account: xescriba
+server: shinyapps.io
+hostUrl: https://api.shinyapps.io/v1
+appId: 7099110
+bundleId: 6361394
+url: https://xescriba.shinyapps.io/epimutacionsShiny/
+when: 1664732364.57958
+lastSyncTime: 1664732364.5796
+asMultiple: FALSE
+asStatic: FALSE

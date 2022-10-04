@@ -1,0 +1,224 @@
+#1 [internal] load build definition from Dockerfile
+#1 sha256:5293ffeaf6e0a6e6dce5d251cdc0e7d09d7d4c734d54c7b16d19369c347a054f
+#1 transferring dockerfile: 2.77kB 0.0s done
+#1 DONE 0.1s
+
+#2 [internal] load .dockerignore
+#2 sha256:63101b24f1279dc1c212b39fe4bbcfb98da4c369c15865e89ae5a84e48f5fed0
+#2 transferring context: 34B 0.0s done
+#2 DONE 0.1s
+
+#3 [internal] load metadata for docker.io/rocker/r-ver:4.2.1
+#3 sha256:cf37fea0f9409cfef1056f1d60223ea0dd7a29cd6503584df9989bb5d6c483f7
+#3 DONE 0.9s
+
+#4 [ 1/33] FROM docker.io/rocker/r-ver:4.2.1@sha256:98e285120b340db948f354111ee609c444099007859a299d1dbe57c5f9e3b903
+#4 sha256:07e68d1bc4fff77dfd2239401e6301e7ba1739beeb9a55eccbe4c6ee01330841
+#4 DONE 0.0s
+
+#8 [ 5/33] RUN R -e 'install.packages("remotes")'
+#8 sha256:0f1dfad7a1d5b37f50470e31b2aa6034dfdf126dba0c96f0b7e2966ad76122c0
+#8 CACHED
+
+#27 [24/33] RUN Rscript -e 'BiocManager::install("AnnotationHub", update = FALSE)'
+#27 sha256:36b49c1de944aec75653e721787bea1b5b838e125e078c683c526bca69206b8b
+#27 CACHED
+
+#12 [ 9/33] RUN Rscript -e 'BiocManager::install("TxDb.Hsapiens.UCSC.hg18.knownGene",update = FALSE)'
+#12 sha256:f2a0ad673cd190dd3bafcb39a7f8265df1d7fd1d58be256cf5dac4538b7c5a5b
+#12 CACHED
+
+#9 [ 6/33] RUN R -e 'install.packages("BiocManager")'
+#9 sha256:68614fd28bd1d98e678e0f8463793a423e2cbe8ce44a8001d4b58d3347531a58
+#9 CACHED
+
+#11 [ 8/33] RUN Rscript -e 'BiocManager::install("TxDb.Hsapiens.UCSC.hg19.knownGene",update = FALSE)'
+#11 sha256:206832150e7cecbe07c5a2becd5d0d3bd03df15362fe5a5c1ada4574ecfc6ff6
+#11 CACHED
+
+#29 [26/33] RUN Rscript -e 'remotes::install_version("testthat",upgrade="never", version = "3.1.4")'
+#29 sha256:384e2852099a89798ac36a3ed4e4368d659487b11c11565e404f66a65e2f0801
+#29 CACHED
+
+#15 [12/33] RUN Rscript -e 'remotes::install_version("shinycssloaders",upgrade="never", version = "1.0.0")'
+#15 sha256:735275a2431868b239b21b45abab8fbe4f28af678761326e5b60e0d2cd2c1e3d
+#15 CACHED
+
+#26 [23/33] RUN Rscript -e 'remotes::install_version("cowplot",upgrade="never", version = "1.1.1")'
+#26 sha256:201eba570ededb2483e2a863a54caef880a9033b42a5e90a91c011bcc46fa032
+#26 CACHED
+
+#17 [14/33] RUN Rscript -e 'BiocManager::install("minfi", update = FALSE)'
+#17 sha256:3c5b41eec04603e4c670a8cb8dc48294656b9f7d359aff69775c50bb71c44118
+#17 CACHED
+
+#22 [19/33] RUN Rscript -e 'BiocManager::install("Gviz", update = FALSE)'
+#22 sha256:3b9ec55f452274c6d3763cb0b8e569bc00530fee903fa341217063ab4fe3d109
+#22 CACHED
+
+#13 [10/33] RUN Rscript -e 'remotes::install_version("shinyWidgets",upgrade="never", version = "0.7.3")'
+#13 sha256:d3df2ff95a48f9d62d198daa32f6d3cbb830f706de16763d1a74037428a52d84
+#13 CACHED
+
+#16 [13/33] RUN Rscript -e 'BiocManager::install("Rsamtools",update = FALSE)'
+#16 sha256:93a3b9cef87bab262ded146cc07ff4af8e125f13d9a978c9e0cde8748584817c
+#16 CACHED
+
+#21 [18/33] RUN Rscript -e 'BiocManager::install("Homo.sapiens", update = FALSE)'
+#21 sha256:d4c0b3d28f89dd3a2fec341428f871574a1f3f0be3892b5f55fe35263943f078
+#21 CACHED
+
+#19 [16/33] RUN Rscript -e 'BiocManager::install("IlluminaHumanMethylation450kmanifest", update = FALSE)'
+#19 sha256:54d1c6d7038a04be548f721679878107d8d00a0b4cc38f59ce7f30eec1a4db40
+#19 CACHED
+
+#18 [15/33] RUN Rscript -e 'BiocManager::install("IlluminaHumanMethylationEPICmanifest", update = FALSE)'
+#18 sha256:7ce43f5a077925d1d0a7cc4aae026f5d3cacd287a35cd234879a78d3fd9c166c
+#18 CACHED
+
+#23 [20/33] RUN Rscript -e 'BiocManager::install("epimutacionsData", update = FALSE)'
+#23 sha256:167a09d69a84ada0d77152c2c59a106c12bd7880ece7fbe0bdf34af2e5d7fa5d
+#23 CACHED
+
+#25 [22/33] RUN Rscript -e 'BiocManager::install("ensembldb", update = FALSE)'
+#25 sha256:705dea8f51d599bc6d9f56717ea4712a7dec64868d047cdaf12ee641d8148cd5
+#25 CACHED
+
+#28 [25/33] RUN Rscript -e 'BiocManager::install("AnnotationDbi", update = FALSE)'
+#28 sha256:3de80b2af4bd0513b59b6bfff475793a21280c3a0f8d64d556b1c612d722d141
+#28 CACHED
+
+#24 [21/33] RUN Rscript -e 'BiocManager::install("epimutacions", update = FALSE)'
+#24 sha256:d1c087f450dd84302a1aedee5b3272cb3cb5675e5899ca492cae28c8d52c910a
+#24 CACHED
+
+#20 [17/33] RUN Rscript -e 'BiocManager::install("IlluminaHumanMethylation450kanno.ilmn12.hg19", update = FALSE)'
+#20 sha256:5e272a840b64821a9461e83be101786dffef8f62c8611e9a594cc1eabe82f941
+#20 CACHED
+
+#6 [ 3/33] RUN mkdir -p /usr/local/lib/R/etc/ /usr/lib/R/etc/
+#6 sha256:e70d1633200f582f9c7c616447c30cb1733291c2c20885f6a3b938d39eac031e
+#6 CACHED
+
+#14 [11/33] RUN Rscript -e 'remotes::install_version("shinyjs",upgrade="never", version = "2.1.0")'
+#14 sha256:be133a4ed980ddcb15df5e0c7d07fbd4b776d743a570358937bc6c7af1910bac
+#14 CACHED
+
+#7 [ 4/33] RUN echo "options(repos = c(CRAN = 'https://cran.rstudio.com/'), download.file.method = 'libcurl', Ncpus = 4)" | tee /usr/local/lib/R/etc/Rprofile.site | tee /usr/lib/R/etc/Rprofile.site
+#7 sha256:22c774d033532db54bbe0a7931f57e47358ec1e73a47fd242dac94c0e70d26b5
+#7 CACHED
+
+#5 [ 2/33] RUN apt-get update && apt-get install -y  gdal-bin git-core imagemagick libcurl4-openssl-dev libgdal-dev libgeos-dev libgeos++-dev libgit2-dev libicu-dev libpng-dev libxt-dev libproj-dev libssl-dev libxml2-dev make pandoc pandoc-citeproc zlib1g-dev libbz2-dev && rm -rf /var/lib/apt/lists/*
+#5 sha256:ad11e93ff0033a789ed3e5ed2093d944ea11c7cfa539c6c69eb7670de77916c8
+#5 CACHED
+
+#10 [ 7/33] RUN Rscript -e 'BiocManager::install("TxDb.Hsapiens.UCSC.hg38.knownGene", update = FALSE)'
+#10 sha256:3c1a5dd8031318a93b17d42f84ce99bcbbfbb944b0cb3518a805035860bcfe36
+#10 CACHED
+
+#30 [27/33] RUN Rscript -e 'remotes::install_version("golem",upgrade="never", version = "0.3.2")'
+#30 sha256:17bd6f45d0acc071217e357b2a80aae9a8eaa8db38492e2839ead0463218a118
+#30 CACHED
+
+#33 [internal] load build context
+#33 sha256:fbc7abc2582b2e2c066dfa8b7cb392c9ca7a84b95e47ac3eb1673ea87f7f067d
+#33 transferring context: 9.87kB 0.2s done
+#33 DONE 0.2s
+
+#31 [28/33] RUN Rscript -e 'remotes::install_version("shinydashboard",upgrade="never", version = "0.7.2")'
+#31 sha256:19ba427c58ef1efb18a861c5fd073c197f55afefa5e227123d1b2d52a6b84f17
+#31 2.116 Downloading package from url: https://cran.rstudio.com/src/contrib/shinydashboard_0.7.2.tar.gz
+#31 4.941 Installing package into ‘/usr/local/lib/R/site-library’
+#31 4.941 (as ‘lib’ is unspecified)
+#31 5.244 * installing *source* package ‘shinydashboard’ ...
+#31 5.249 ** package ‘shinydashboard’ successfully unpacked and MD5 sums checked
+#31 5.249 ** using staged installation
+#31 5.277 ** R
+#31 5.277 ** inst
+#31 5.283 ** byte-compile and prepare package for lazy loading
+#31 6.483 ** help
+#31 6.570 *** installing help indices
+#31 6.633 ** building package indices
+#31 6.893 ** testing if installed package can be loaded from temporary location
+#31 7.359 ** testing if installed package can be loaded from final location
+#31 7.918 ** testing if installed package keeps a record of temporary installation path
+#31 7.920 * DONE (shinydashboard)
+#31 DONE 8.0s
+
+#32 [29/33] RUN mkdir /build_zone
+#32 sha256:87c94acfcca86aa8545ae5d78faa949f86242128ee7a76587054c398bbe720fa
+#32 DONE 0.6s
+
+#34 [30/33] ADD . /build_zone
+#34 sha256:daa4187fdfdfaf8a35c3e372059d898d38cfae321f9e89c2161eb9344edc712f
+#34 DONE 0.1s
+
+#35 [31/33] WORKDIR /build_zone
+#35 sha256:f2cbcc509f880f46f346e0a25bc211649ab796e7fcd321998f91ddf3939185be
+#35 DONE 0.0s
+
+#36 [32/33] RUN R -e 'remotes::install_local(upgrade="never")'
+#36 sha256:796a7b6aa14a5db8cf4a62a792c45d0b150a851e32a565df875e8f0b854604f4
+#36 0.777 
+#36 0.777 R version 4.2.1 (2022-06-23) -- "Funny-Looking Kid"
+#36 0.777 Copyright (C) 2022 The R Foundation for Statistical Computing
+#36 0.777 Platform: x86_64-pc-linux-gnu (64-bit)
+#36 0.777 
+#36 0.777 R is free software and comes with ABSOLUTELY NO WARRANTY.
+#36 0.777 You are welcome to redistribute it under certain conditions.
+#36 0.777 Type 'license()' or 'licence()' for distribution details.
+#36 0.777 
+#36 0.777   Natural language support but running in an English locale
+#36 0.777 
+#36 0.777 R is a collaborative project with many contributors.
+#36 0.777 Type 'contributors()' for more information and
+#36 0.777 'citation()' on how to cite R or R packages in publications.
+#36 0.777 
+#36 0.777 Type 'demo()' for some demos, 'help()' for on-line help, or
+#36 0.777 'help.start()' for an HTML browser interface to help.
+#36 0.777 Type 'q()' to quit R.
+#36 0.777 
+#36 0.899 > remotes::install_local(upgrade="never")
+#36 2.858 Running `R CMD build`...
+#36 3.173 * checking for file ‘/tmp/RtmpQd7UqL/file77f7d2687/build_zone/DESCRIPTION’ ... OK
+#36 3.173 * preparing ‘epimutacionsShiny’:
+#36 3.173 * checking DESCRIPTION meta-information ... OK
+#36 3.173 * excluding invalid files
+#36 3.173 Subdirectory 'R' contains invalid file names:
+#36 3.173   ‘_disable_autoload.R’
+#36 3.173 * checking for LF line-endings in source and make files and shell scripts
+#36 3.173 * checking for empty or unneeded directories
+#36 3.173 Omitted ‘LazyData’ from DESCRIPTION
+#36 3.173 * building ‘epimutacionsShiny_0.0.0.9000.tar.gz’
+#36 3.177 Installing package into ‘/usr/local/lib/R/site-library’
+#36 3.177 (as ‘lib’ is unspecified)
+#36 3.436 * installing *source* package ‘epimutacionsShiny’ ...
+#36 3.436 ** using staged installation
+#36 3.452 ** R
+#36 3.462 ** inst
+#36 3.463 ** byte-compile and prepare package for lazy loading
+#36 10.31 ** help
+#36 10.32 *** installing help indices
+#36 10.34 ** building package indices
+#36 10.55 ** testing if installed package can be loaded from temporary location
+#36 11.80 ** testing if installed package can be loaded from final location
+#36 13.30 ** testing if installed package keeps a record of temporary installation path
+#36 13.31 * DONE (epimutacionsShiny)
+#36 13.32 > 
+#36 13.32 > 
+#36 DONE 13.4s
+
+#37 [33/33] RUN rm -rf /build_zone
+#37 sha256:dabd59a269534e77d917fe71f1a8f10346803734469b0f54f1c5dcf6664b1228
+#37 DONE 0.6s
+
+#38 exporting to image
+#38 sha256:e8c613e07b0b7ff33893b694f7759a10d42e180f2b4dc349fb57dc6b71dcab00
+#38 exporting layers
+#38 exporting layers 0.1s done
+#38 writing image sha256:4a095f40561877412038d290c10fb17ecc6aa2d25dbb16b71d0a0c7ca0e79619
+#38 writing image sha256:4a095f40561877412038d290c10fb17ecc6aa2d25dbb16b71d0a0c7ca0e79619 done
+#38 naming to docker.io/library/epimutacions-shiny:latest done
+#38 DONE 0.3s
+
+Use 'docker scan' to run Snyk tests against images to find vulnerabilities and learn how to fix them
