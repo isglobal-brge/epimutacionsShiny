@@ -148,54 +148,55 @@ mod_epimut_server <- function(id){
     })
     
     observeEvent(input$trigger_epimutations, {
-      parameters <- epimutacions::epi_parameters(
-        manova = list(
-          "pvalue_cutoff" = input$pvalue_cutoff
-        ),
-        mlm = list(
-          "pvalue_cutoff" = input$pvalue_cutoff
-        ),
-        iForest = list(
-          "outlier_score_cutoff" = input$outlier_score_cutoff,
-          "ntrees" = input$ntrees
-        ),
-        mahdist = list(
-          "nsamp" = input$nsamp
-        ),
-        quantile = list(
-          "window_sz" = input$window_sz,
-          "offset_abs" = input$offset_abs,
-          "qsup" = input$qsup,
-          "qinf" = input$qinf
-        ),
-        beta = list(
-          "pvalue_cutoff" = input$pvalue_cutoff_beta,
-          "diff_threshold" = input$diff_threshold
-        )
-      )
-      if(!input$one_leave_out){
-        withProgress(message = 'Discovering epimutations...', value = 0.5, {
-          case_samples <- loaded_dataset$data[,loaded_dataset$data[[input$control_variable_selector_value]] == input$case_encoding_value]
-          control_samples <- loaded_dataset$data[,loaded_dataset$data[[input$control_variable_selector_value]] == input$control_encoding_value]
-          results$results <- epimutacions::epimutations(case_samples,
-                                                        control_samples,
-                                                        method = input$epimut_method,
-                                                        epi_params = parameters)
-        })
-      } else {
-        withProgress(message = 'Discovering epimutations...', value = 0.5, {
-          results$results <- epimutacions::epimutations_one_leave_out(
-            loaded_dataset$data,
-            method = input$epimut_method,
-            epi_params = parameters
+      tryCatch({
+        parameters <- epimutacions::epi_parameters(
+          manova = list(
+            "pvalue_cutoff" = input$pvalue_cutoff
+          ),
+          mlm = list(
+            "pvalue_cutoff" = input$pvalue_cutoff
+          ),
+          iForest = list(
+            "outlier_score_cutoff" = input$outlier_score_cutoff,
+            "ntrees" = input$ntrees
+          ),
+          mahdist = list(
+            "nsamp" = input$nsamp
+          ),
+          quantile = list(
+            "window_sz" = input$window_sz,
+            "offset_abs" = input$offset_abs,
+            "qsup" = input$qsup,
+            "qinf" = input$qinf
+          ),
+          beta = list(
+            "pvalue_cutoff" = input$pvalue_cutoff_beta,
+            "diff_threshold" = input$diff_threshold
           )
-          results$results <- results$results[!is.na(results$results$cpg_n),]
-          if(nrow(results$results) > 0){
-            results$results$epi_id <- paste0("epimutation_", seq(from = 1, to = nrow(results$results)))
-          }
-        })
-      }
-      shinyjs::js$enableTab("Visualization")
+        )
+        if(!input$one_leave_out){
+          withProgress(message = 'Discovering epimutations...', value = 0.5, {
+            case_samples <- loaded_dataset$data[,loaded_dataset$data[[input$control_variable_selector_value]] == input$case_encoding_value]
+            control_samples <- loaded_dataset$data[,loaded_dataset$data[[input$control_variable_selector_value]] == input$control_encoding_value]
+            results$results <- epimutacions::epimutations(case_samples,
+                                                          control_samples,
+                                                          method = input$epimut_method,
+                                                          epi_params = parameters)
+          })
+        } else {
+          withProgress(message = 'Discovering epimutations...', value = 0.5, {
+            results$results <- epimutacions::epimutations_one_leave_out(
+              loaded_dataset$data,
+              method = input$epimut_method,
+              epi_params = parameters
+            )
+            results$results <- results$results[!is.na(results$results$cpg_n),]
+          })
+        }
+        shinyjs::js$enableTab("Visualization")
+      }, error = function(w){
+        showNotification(paste(w), type = "error")
+      })
       # case_samples <- data[,data[["status"]] == "case"]
       # control_samples <- data[,data[["status"]] == "control"]
       # results <- epimutacions::epimutations(case_samples, control_samples, method = "manova")

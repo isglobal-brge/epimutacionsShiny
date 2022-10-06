@@ -38,6 +38,7 @@ usethis::use_package( "shinydashboard" )
 usethis::use_package( "ExperimentHub" )
 usethis::use_package( "reshape2" )
 usethis::use_package( "ggrepel" )
+usethis::use_package( "cowplot" )
 
 ## Add modules ----
 ## Create a module infrastructure in R/

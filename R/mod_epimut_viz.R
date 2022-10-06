@@ -24,7 +24,7 @@ mod_epimut_viz_ui <- function(id){
     shinycssloaders::withSpinner(plotOutput(ns("epi_plot")))
   )
 }
-    
+
 #' epimut_viz Server Functions
 #'
 #' @noRd 
@@ -35,22 +35,34 @@ mod_epimut_viz_server <- function(id){
       selectInput(
         inputId = ns("selected_epimutation"), 
         label = "Epimutation to visualize", 
-        choices = results$results$epi_id
+        choices = unique(results$results$epi_id)
       )
     })
     
     output$epi_plot <- renderPlot({
-      plot <- plot_epimutations(as.data.frame(results$results[results$results$epi_id == input$selected_epimutation,]), 
-                                loaded_dataset$data,
-                                genes_annot = input$annotation_genes,
-                                regulation = input$regulation)
+      
+      if(sum(results$results$epi_id == input$selected_epimutation) > 1){
+        plots <- lapply(which(results$results$epi_id == input$selected_epimutation), function(x){
+          plot_epimutations(as.data.frame(results$results[x,]), 
+                            loaded_dataset$data,
+                            genes_annot = input$annotation_genes,
+                            regulation = input$regulation)
+        })
+        expr <- paste0("plot <- cowplot::plot_grid(", paste0(paste0("plots[[", 1:length(plots), "]]"), collapse = ", "), ")")
+        eval(str2expression(expr))
+      } else {
+        plot <- plot_epimutations(as.data.frame(results$results[results$results$epi_id == input$selected_epimutation,]), 
+                                  loaded_dataset$data,
+                                  genes_annot = input$annotation_genes,
+                                  regulation = input$regulation)
+      }
       plot
     })
   })
 }
-    
+
 ## To be copied in the UI
 # mod_epimut_viz_ui("epimut_viz_1")
-    
+
 ## To be copied in the server
 # mod_epimut_viz_server("epimut_viz_1")
