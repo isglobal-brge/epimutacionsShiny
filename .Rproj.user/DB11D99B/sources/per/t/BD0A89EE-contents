@@ -29,11 +29,11 @@ mod_epimut_ui <- function(id){
       ),
       shinydashboard::box(
         title = "Parameters of method",
-        uiOutput(ns("epi_parameters_ui"))
-      ),
-      actionButton(
-        inputId = ns("trigger_epimutations"), 
-        label = "Discover epimutations"
+        uiOutput(ns("epi_parameters_ui")),
+        actionButton(
+          inputId = ns("trigger_epimutations"), 
+          label = "Discover epimutations"
+        )
       ),
       DT::DTOutput(ns("epi_results_table"))
     )
@@ -148,6 +148,8 @@ mod_epimut_server <- function(id){
     })
     
     observeEvent(input$trigger_epimutations, {
+      library(ExperimentHub)
+      library(epimutacions)
       tryCatch({
         parameters <- epimutacions::epi_parameters(
           manova = list(
