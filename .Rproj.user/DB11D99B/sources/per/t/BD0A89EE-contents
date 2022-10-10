@@ -195,6 +195,7 @@ mod_epimut_server <- function(id){
             results$results <- results$results[!is.na(results$results$cpg_n),]
           })
         }
+        results$results %>% dplyr::relocate(epi_region_id, .before = epi_id) -> results$results
         shinyjs::js$enableTab("Visualization")
       }, error = function(w){
         showNotification(paste(w), type = "error")
