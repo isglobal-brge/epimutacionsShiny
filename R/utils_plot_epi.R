@@ -90,11 +90,11 @@ plot_epimutations <- function(dmr,
     stop("The argument 'genome' must be introduced")
   }
   ##Unique DMR
-  if(nrow(dmr) > 1){
-    warning("more than one DMR introduced (nrow > 1)
-            only the first element will be used")
-    dmr <- dmr[1,]
-  }
+  # if(nrow(dmr) > 1){
+  #   warning("more than one DMR introduced (nrow > 1)
+  #           only the first element will be used")
+  #   dmr <- dmr[1,]
+  # }
   ##Genome assembly
   if(genome != "hg38" & genome != "hg19" & genome != "hg18"){
     stop("Argument 'genome' must be 'hg38', 'hg19' or 'hg18'")
@@ -115,22 +115,20 @@ plot_epimutations <- function(dmr,
     stop("'grDevices' package not avaibale")
 
 
-
-
   # DMR column names must be always
   # the same (set the common column names)
-  dmr  <- cols_names(dmr, cpg_ids_col = TRUE)  #epi_plot
+  # dmr  <- cols_names(dmr, cpg_ids_col = TRUE)  #epi_plot
 
   # Set 'from' and 'to' arguments value
   if(is.null(from) & is.null(to)){
-    from <- dmr$start - 1000
-    to <- dmr$end + 1000
+    from <- dmr$start[1] - 1000
+    to <- dmr$end[1] + 1000
   }
 
   #Generate GenomicRanges object to contain in the same object:
   ## * Genomic ranges of each CpG in the DMR
   ## * Beta values
-  gr <- create_GRanges_class(methy, dmr[,"cpg_ids"]) #epi_plot
+  gr <- create_GRanges_class(methy, dmr[,"cpg_ids"][1]) #epi_plot
   betas_sd_mean <- betas_sd_mean(gr) #epi_plot
 
   #Generate variables in 'beta_values' data frame containing:
@@ -139,7 +137,7 @@ plot_epimutations <- function(dmr,
   # * lines: 'longdash' for controls and
   #          'solid' for case and population mean
 
-  status <- ifelse(betas_sd_mean$beta_values$variable == dmr$sample,
+  status <- ifelse(betas_sd_mean$beta_values$variable %in% dmr$sample,
                    dmr$sample,
                    "control")
   betas_sd_mean$beta_values$status <- status
@@ -149,30 +147,44 @@ plot_epimutations <- function(dmr,
   betas_sd_mean$beta_values$lines <- lines
   rm(lines)
   colors <- c("control" = "black",
-              "mean" = "darkblue",
-              "red")
-  names(colors)[3] <- dmr$sample
+              "mean" = "darkblue")#,
+              # "red")
+  # names(colors)[3] <- dmr$sample
 
   #Generate a variable with the CpGs names
   variable <- betas_sd_mean$beta_values$variable
   names <- betas_sd_mean$beta_values[variable == dmr$sample,]
   rm(variable)
   names$id <- names(gr)
-
+  
   #Plot epimutations
-
-  plot_betas <- ggplot2::ggplot() +
-    ggplot2::geom_line(data = betas_sd_mean$beta_values,
-                       ggplot2::aes(x = start,
-                                    y = value,
-                                    group = variable,
-                                    color = status),
-                       linetype = betas_sd_mean$beta_values$lines) +
-    ggplot2::geom_point(data = betas_sd_mean$beta_values,
-                        ggplot2::aes(x = start,
-                                     y = value,
-                                     group = variable,
-                                     color = status))
+  if(length(dmr$sample) < 2){
+    plot_betas <- ggplot2::ggplot() +
+      ggplot2::geom_line(data = betas_sd_mean$beta_values,
+                         ggplot2::aes(x = start,
+                                      y = value,
+                                      group = variable,
+                                      color = status),
+                         linetype = betas_sd_mean$beta_values$lines) +
+      ggplot2::geom_point(data = betas_sd_mean$beta_values,
+                          ggplot2::aes(x = start,
+                                       y = value,
+                                       group = variable,
+                                       color = status))
+  } else {
+    plot_betas <- ggplot2::ggplot() +
+      ggplot2::geom_line(data = betas_sd_mean$beta_values,
+                         ggplot2::aes(x = start,
+                                      y = value,
+                                      color = status),
+                         linetype = betas_sd_mean$beta_values$lines) +
+      ggplot2::geom_point(data = betas_sd_mean$beta_values,
+                          ggplot2::aes(x = start,
+                                       y = value,
+                                       color = status))
+  }
+  
+                                     
   plot_sd <- plot_betas +
     ggplot2::geom_ribbon(data = betas_sd_mean$sd,
                          ggplot2::aes(x = start,
@@ -214,12 +226,13 @@ plot_epimutations <- function(dmr,
 
   plot <- plot_cpg_names +
     ggplot2::lims(y = c(0,1)) +
-    ggplot2::scale_colour_manual(name = "Status", values = colors) +
+    # ggplot2::scale_colour_manual(name = "Status", values = colors) +
     ggplot2::theme_bw() +
-    ggplot2::ggtitle(paste0(dmr$sample,": ",
-                            dmr$seqnames, ":",
-                            dmr$start,
-                            " - ", dmr$end)) +
+    ggplot2::ggtitle(paste0(dmr$sample, collapse = ", ")) +
+    # ggplot2::ggtitle(paste0(dmr$sample,": ",
+    #                         dmr$seqnames, ":",
+    #                         dmr$start,
+    #                         " - ", dmr$end)) +
     ggplot2::theme(plot.title = ggplot2::element_text(hjust = 0.5)) +
     ggplot2::labs(x = "Coordinates") +
     ggplot2::labs(y = "DNA methylation level")
@@ -228,11 +241,11 @@ plot_epimutations <- function(dmr,
   if (requireNamespace("Gviz", quietly = TRUE)){
     if(genes_annot == TRUE | regulation == TRUE){
       ideo_track <- Gviz::IdeogramTrack(genome = genome,
-                                        chromosome = dmr$seqnames)
+                                        chromosome = dmr$chromosome[1])
       genome_track <- Gviz::GenomeAxisTrack()
       genes <- UCSC_annotation(genome) #epi_plot
       gene_track <- Gviz::GeneRegionTrack(genes,
-                                          chromosome = dmr$seqnames,
+                                          chromosome = dmr$chromosome[1],
                                           name = "Genes",
                                           transcriptAnnotation = "symbol",
                                           background.title = "#8F913A",
@@ -241,9 +254,9 @@ plot_epimutations <- function(dmr,
         tracks_Highlight <- Gviz::HighlightTrack(trackList =
                                                    list(genome_track,
                                                         gene_track),
-                                                 start = dmr$start,
-                                                 end = dmr$end,
-                                                 chromosome = dmr$seqnames,
+                                                 start = dmr$start[1],
+                                                 end = dmr$end[1],
+                                                 chromosome = dmr$chromosome[1],
                                                  col = "#7EA577",
                                                  fill = "#C6D7C3",
                                                  alpha = 0.4,
@@ -257,7 +270,7 @@ plot_epimutations <- function(dmr,
              to download the annotations from 'UCSC'")
         }
         annotation <- UCSC_regulation(genome,
-                                      dmr$seqnames,
+                                      dmr$chromosome[1],
                                       from,
                                       to)
 
@@ -269,9 +282,9 @@ plot_epimutations <- function(dmr,
                                                           annotation$H3K4Me3,
                                                           annotation$H3K27Ac,
                                                           annotation$H3K27Me3),
-                                                   start = dmr$start,
-                                                   end = dmr$end,
-                                                   chromosome = dmr$seqnames,
+                                                   start = dmr$start[1],
+                                                   end = dmr$end[1],
+                                                   chromosome = dmr$chromosome[1],
                                                    col = "#7EA577",
                                                    fill = "#C6D7C3",
                                                    alpha = 0.4,
@@ -284,9 +297,9 @@ plot_epimutations <- function(dmr,
                                                           annotation$cpgIslands,
                                                           annotation$H3K4Me3,
                                                           annotation$H3K27Ac),
-                                                   start = dmr$start,
-                                                   end = dmr$end,
-                                                   chromosome = dmr$seqnames,
+                                                   start = dmr$start[1],
+                                                   end = dmr$end[1],
+                                                   chromosome = dmr$chromosome[1],
                                                    col = "#7EA577",
                                                    fill = "#C6D7C3",
                                                    alpha = 0.4,

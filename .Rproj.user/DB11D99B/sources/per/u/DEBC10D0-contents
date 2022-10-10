@@ -13,13 +13,5 @@ epi_mvo <- epimutations(case_samples_2,
                         control_samples_2, 
                         method = "manova")
 
+plot_epimutations(as.data.frame(epi_mvo[epi_mvo$epi_region_id == "chr7_27186554",]), methy)
 
-
-library(epimutacions)
-data(GRset)
-data <- GRset
-
-results <- epimutacions::epimutations_one_leave_out(
-  data,
-  method = "manova"
-)
