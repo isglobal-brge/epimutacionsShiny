@@ -1,0 +1,26 @@
+{
+    "id": "C03A0052",
+    "path": "C:/Users/Xavier/OneDrive/ISGlobal/PhD/GitHub/epimutacionsShiny/R/mod_data_selection.R",
+    "project_path": "R/mod_data_selection.R",
+    "type": "r_source",
+    "hash": "1769143990",
+    "contents": "",
+    "dirty": false,
+    "created": 1663854974616.0,
+    "source_on_save": false,
+    "relative_order": 4,
+    "properties": {
+        "source_window_id": "",
+        "Source": "Source",
+        "cursorPosition": "69,31",
+        "scrollLine": "0"
+    },
+    "folds": "",
+    "lastKnownWriteTime": 1663857489,
+    "encoding": "UTF-8",
+    "collab_server": "",
+    "source_window": "",
+    "last_content_update": 1663857489753,
+    "read_only": false,
+    "read_only_alternatives": []
+}

@@ -1,0 +1,17 @@
+library(ExperimentHub)
+library(epimutacions)
+eh <- ExperimentHub()
+query(eh, c("epimutacionsData"))
+
+methy <- eh[["EH6690"]]
+
+case_samples_2 <- methy[,methy$status == "case"]
+control_samples_2 <- methy[,methy$status == "control"]
+
+
+epi_mvo <- epimutations(case_samples_2, 
+                        control_samples_2, 
+                        method = "manova")
+
+plot_epimutations(as.data.frame(epi_mvo[epi_mvo$epi_region_id == "chr7_27186554",]), methy)
+

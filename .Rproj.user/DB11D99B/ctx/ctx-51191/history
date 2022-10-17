@@ -1,0 +1,512 @@
+# Comment this if you don't want the app to be served on a random port
+options(shiny.port = httpuv::randomPort())
+# Detach all loaded packages and clean your environment
+golem::detach_all_attached()
+# rm(list=ls(all.names = TRUE))
+# Document and reload your package
+golem::document_and_reload()
+# Run the application
+run_app()
+?selectInput
+# Set options here
+options(golem.app.prod = FALSE) # TRUE = production mode, FALSE = development mode
+# Comment this if you don't want the app to be served on a random port
+options(shiny.port = httpuv::randomPort())
+# Detach all loaded packages and clean your environment
+golem::detach_all_attached()
+# rm(list=ls(all.names = TRUE))
+# Document and reload your package
+golem::document_and_reload()
+# Run the application
+run_app()
+# Set options here
+options(golem.app.prod = FALSE) # TRUE = production mode, FALSE = development mode
+# Comment this if you don't want the app to be served on a random port
+options(shiny.port = httpuv::randomPort())
+# Detach all loaded packages and clean your environment
+golem::detach_all_attached()
+# rm(list=ls(all.names = TRUE))
+# Document and reload your package
+golem::document_and_reload()
+# Run the application
+run_app()
+# Set options here
+options(golem.app.prod = FALSE) # TRUE = production mode, FALSE = development mode
+# Comment this if you don't want the app to be served on a random port
+options(shiny.port = httpuv::randomPort())
+# Detach all loaded packages and clean your environment
+golem::detach_all_attached()
+# rm(list=ls(all.names = TRUE))
+# Document and reload your package
+golem::document_and_reload()
+# Run the application
+run_app()
+# Set options here
+options(golem.app.prod = FALSE) # TRUE = production mode, FALSE = development mode
+# Comment this if you don't want the app to be served on a random port
+options(shiny.port = httpuv::randomPort())
+# Detach all loaded packages and clean your environment
+golem::detach_all_attached()
+# rm(list=ls(all.names = TRUE))
+# Document and reload your package
+golem::document_and_reload()
+# Run the application
+run_app()
+# Set options here
+options(golem.app.prod = FALSE) # TRUE = production mode, FALSE = development mode
+# Comment this if you don't want the app to be served on a random port
+options(shiny.port = httpuv::randomPort())
+# Detach all loaded packages and clean your environment
+golem::detach_all_attached()
+# rm(list=ls(all.names = TRUE))
+# Document and reload your package
+golem::document_and_reload()
+# Run the application
+run_app()
+# Set options here
+options(golem.app.prod = FALSE) # TRUE = production mode, FALSE = development mode
+# Comment this if you don't want the app to be served on a random port
+options(shiny.port = httpuv::randomPort())
+# Detach all loaded packages and clean your environment
+golem::detach_all_attached()
+# rm(list=ls(all.names = TRUE))
+# Document and reload your package
+golem::document_and_reload()
+# Run the application
+run_app()
+# Set options here
+options(golem.app.prod = FALSE) # TRUE = production mode, FALSE = development mode
+# Comment this if you don't want the app to be served on a random port
+options(shiny.port = httpuv::randomPort())
+# Detach all loaded packages and clean your environment
+golem::detach_all_attached()
+# rm(list=ls(all.names = TRUE))
+# Document and reload your package
+golem::document_and_reload()
+# Run the application
+run_app()
+# Set options here
+options(golem.app.prod = FALSE) # TRUE = production mode, FALSE = development mode
+# Comment this if you don't want the app to be served on a random port
+options(shiny.port = httpuv::randomPort())
+# Detach all loaded packages and clean your environment
+golem::detach_all_attached()
+# rm(list=ls(all.names = TRUE))
+# Document and reload your package
+golem::document_and_reload()
+# Run the application
+run_app()
+# Set options here
+options(golem.app.prod = FALSE) # TRUE = production mode, FALSE = development mode
+# Comment this if you don't want the app to be served on a random port
+options(shiny.port = httpuv::randomPort())
+# Detach all loaded packages and clean your environment
+golem::detach_all_attached()
+# rm(list=ls(all.names = TRUE))
+# Document and reload your package
+golem::document_and_reload()
+# Run the application
+run_app()
+# Set options here
+options(golem.app.prod = FALSE) # TRUE = production mode, FALSE = development mode
+# Comment this if you don't want the app to be served on a random port
+options(shiny.port = httpuv::randomPort())
+# Detach all loaded packages and clean your environment
+golem::detach_all_attached()
+# rm(list=ls(all.names = TRUE))
+# Document and reload your package
+golem::document_and_reload()
+# Run the application
+run_app()
+golem::add_utils("data", with_test = TRUE)
+# Set options here
+options(golem.app.prod = FALSE) # TRUE = production mode, FALSE = development mode
+# Comment this if you don't want the app to be served on a random port
+options(shiny.port = httpuv::randomPort())
+# Detach all loaded packages and clean your environment
+golem::detach_all_attached()
+# rm(list=ls(all.names = TRUE))
+# Document and reload your package
+golem::document_and_reload()
+# Run the application
+run_app()
+BiocManager::install("ExperimentHub")
+# Set options here
+options(golem.app.prod = FALSE) # TRUE = production mode, FALSE = development mode
+# Comment this if you don't want the app to be served on a random port
+options(shiny.port = httpuv::randomPort())
+# Detach all loaded packages and clean your environment
+golem::detach_all_attached()
+# rm(list=ls(all.names = TRUE))
+# Document and reload your package
+golem::document_and_reload()
+# Run the application
+run_app()
+# Load ExperimentHub
+eh <- ExperimentHub::ExperimentHub()
+?ExperimentHub::ExperimentHub
+ExperimentHub::ExperimentHub()
+# Set options here
+options(golem.app.prod = FALSE) # TRUE = production mode, FALSE = development mode
+# Comment this if you don't want the app to be served on a random port
+options(shiny.port = httpuv::randomPort())
+# Detach all loaded packages and clean your environment
+golem::detach_all_attached()
+# rm(list=ls(all.names = TRUE))
+# Document and reload your package
+golem::document_and_reload()
+# Run the application
+run_app()
+# Set options here
+options(golem.app.prod = FALSE) # TRUE = production mode, FALSE = development mode
+# Comment this if you don't want the app to be served on a random port
+options(shiny.port = httpuv::randomPort())
+# Detach all loaded packages and clean your environment
+golem::detach_all_attached()
+# rm(list=ls(all.names = TRUE))
+# Document and reload your package
+golem::document_and_reload()
+# Run the application
+run_app()
+ExperimentHub::ExperimentHub()
+ExperimentHub::ExperimentHub(force = T)
+ExperimentHub::getExperimentHubOption()
+ExperimentHub::getExperimentHubOption("CACHE")
+tempdir()
+tempdir()
+# browser()
+# Load ExperimentHub
+# Create cache temp folder
+tempdir <- tempdir()
+eh <- ExperimentHub::ExperimentHub(cache = tempdir)
+query(eh, c("epimutacionsData"))
+ExperimentHub::query(eh, c("epimutacionsData"))
+query(eh, c("epimutacionsData"))
+eh
+AnnotationHub::query(eh, c("epimutacionsData"))
+eh
+candRegsGR <- eh[["EH6692"]]
+## Dependencies ----
+## Amend DESCRIPTION with dependencies read from package code parsing
+attachment::att_amend_desc("epimutacionsData")
+install.packages("attachment")
+## Dependencies ----
+## Amend DESCRIPTION with dependencies read from package code parsing
+attachment::att_amend_desc("epimutacionsData")
+View(eh)
+## Dependencies ----
+usethis::use_package( "epimutacionsData" )
+# Set options here
+options(golem.app.prod = FALSE) # TRUE = production mode, FALSE = development mode
+# Comment this if you don't want the app to be served on a random port
+options(shiny.port = httpuv::randomPort())
+# Detach all loaded packages and clean your environment
+golem::detach_all_attached()
+# rm(list=ls(all.names = TRUE))
+# Document and reload your package
+golem::document_and_reload()
+# Run the application
+run_app()
+input$dataset_selector
+baseDir <- system.file("extdata", package = "epimutacionsData")
+targets <- minfi::read.metharray.sheet(baseDir)
+install.packages("minfi")
+BiocManager::install("minfi")
+baseDir <- system.file("extdata", package = "epimutacionsData")
+targets <- minfi::read.metharray.sheet(baseDir)
+baseDir
+library(minfi)
+install.packages("Rsamtools")
+install.packages("Rsamtools")
+BiocManager::install("Rsamtools")
+targets <- minfi::read.metharray.sheet(baseDir)
+library(Rsamtools)
+remove.packages("Rsamtools")
+BiocManager::install("Rsamtools")
+# Get selected data
+if(input$dataset_selector == "IDAT files"){
+baseDir <- system.file("extdata", package = "epimutacionsData")
+targets <- minfi::read.metharray.sheet(baseDir)
+} else if (input$dataset_selector == "Reference panel") {
+} else if (input$dataset_selector == "Methy") {
+}
+targets <- minfi::read.metharray.sheet(baseDir)
+BiocManager::install("Rsamtools")
+# Set options here
+options(golem.app.prod = FALSE) # TRUE = production mode, FALSE = development mode
+# Comment this if you don't want the app to be served on a random port
+options(shiny.port = httpuv::randomPort())
+# Detach all loaded packages and clean your environment
+golem::detach_all_attached()
+# rm(list=ls(all.names = TRUE))
+# Document and reload your package
+golem::document_and_reload()
+# Run the application
+run_app()
+# Set options here
+options(golem.app.prod = FALSE) # TRUE = production mode, FALSE = development mode
+# Comment this if you don't want the app to be served on a random port
+options(shiny.port = httpuv::randomPort())
+# Detach all loaded packages and clean your environment
+golem::detach_all_attached()
+# rm(list=ls(all.names = TRUE))
+# Document and reload your package
+golem::document_and_reload()
+# Run the application
+run_app()
+# Set options here
+options(golem.app.prod = FALSE) # TRUE = production mode, FALSE = development mode
+# Comment this if you don't want the app to be served on a random port
+options(shiny.port = httpuv::randomPort())
+# Detach all loaded packages and clean your environment
+golem::detach_all_attached()
+# rm(list=ls(all.names = TRUE))
+# Document and reload your package
+golem::document_and_reload()
+# Run the application
+run_app()
+results$results
+DT::renderDT(
+incProgress(1/n, detail = paste("Doing part", i))
+)
+# Set options here
+options(golem.app.prod = FALSE) # TRUE = production mode, FALSE = development mode
+# Comment this if you don't want the app to be served on a random port
+options(shiny.port = httpuv::randomPort())
+# Detach all loaded packages and clean your environment
+golem::detach_all_attached()
+# rm(list=ls(all.names = TRUE))
+# Document and reload your package
+golem::document_and_reload()
+# Run the application
+run_app()
+# Set options here
+options(golem.app.prod = FALSE) # TRUE = production mode, FALSE = development mode
+# Comment this if you don't want the app to be served on a random port
+options(shiny.port = httpuv::randomPort())
+# Detach all loaded packages and clean your environment
+golem::detach_all_attached()
+# rm(list=ls(all.names = TRUE))
+# Document and reload your package
+golem::document_and_reload()
+# Run the application
+run_app()
+# Set options here
+options(golem.app.prod = FALSE) # TRUE = production mode, FALSE = development mode
+# Comment this if you don't want the app to be served on a random port
+options(shiny.port = httpuv::randomPort())
+# Detach all loaded packages and clean your environment
+golem::detach_all_attached()
+# rm(list=ls(all.names = TRUE))
+# Document and reload your package
+golem::document_and_reload()
+# Run the application
+run_app()
+# Set options here
+options(golem.app.prod = FALSE) # TRUE = production mode, FALSE = development mode
+# Comment this if you don't want the app to be served on a random port
+options(shiny.port = httpuv::randomPort())
+# Detach all loaded packages and clean your environment
+golem::detach_all_attached()
+# rm(list=ls(all.names = TRUE))
+# Document and reload your package
+golem::document_and_reload()
+# Run the application
+run_app()
+# Set options here
+options(golem.app.prod = FALSE) # TRUE = production mode, FALSE = development mode
+# Comment this if you don't want the app to be served on a random port
+options(shiny.port = httpuv::randomPort())
+# Detach all loaded packages and clean your environment
+golem::detach_all_attached()
+# rm(list=ls(all.names = TRUE))
+# Document and reload your package
+golem::document_and_reload()
+# Run the application
+run_app()
+# Set options here
+options(golem.app.prod = FALSE) # TRUE = production mode, FALSE = development mode
+# Comment this if you don't want the app to be served on a random port
+options(shiny.port = httpuv::randomPort())
+# Detach all loaded packages and clean your environment
+golem::detach_all_attached()
+# rm(list=ls(all.names = TRUE))
+# Document and reload your package
+golem::document_and_reload()
+# Run the application
+run_app()
+epimutacions::plot_epimutations(as.data.frame(results$results[1,]), loaded_dataset$data)
+results$results[1,]
+epimutacions::plot_epimutations
+results$results[1,]
+epimutacions::plot_epimutations(as.data.frame(results$results[1,]), loaded_dataset$data)
+epimutacions::plot_epimutations(results$results[1,], loaded_dataset$data)
+x11()
+epimutacions::plot_epimutations(results$results[1,], loaded_dataset$data)
+library(epimutacions)
+epimutacions::plot_epimutations(results$results[1,], loaded_dataset$data)
+library(ExperimentHub)
+epimutacions::plot_epimutations(as.data.frame(results$results[1,]), loaded_dataset$data)
+library(minfi)
+epimutacions::plot_epimutations(as.data.frame(results$results[1,]), loaded_dataset$data)
+# Load ExperimentHub
+tempdir <- tempdir()
+eh <- ExperimentHub::ExperimentHub(cache = tempdir)
+data <- eh[["EH6690"]]
+case_samples <- data[,loaded_dataset$data[["case"]] == "case"]
+case_samples <- data[,data[["case"]] == "case"]
+control_samples <- data[,data[["case"]] == "control"]
+case_samples <- data[,data[["case"]] == "case"]
+control_samples <- data[,data[["case"]] == "control"]
+results <- epimutacions::epimutations(case_samples,
+control_samples,
+method = "manova")
+data[["case"]]
+data
+case_samples <- data[,data[["status"]] == "case"]
+control_samples <- data[,data[["status"]] == "control"]
+results <- epimutacions::epimutations(case_samples, control_samples, method = "manova")
+epimutacions::plot_epimutations(results)
+epimutacions::plot_epimutations(results, data)
+# Load ExperimentHub
+tempdir <- tempdir()
+eh <- ExperimentHub::ExperimentHub(cache = tempdir)
+data <- eh[["EH6690"]]
+case_samples <- data[,data[["status"]] == "case"]
+control_samples <- data[,data[["status"]] == "control"]
+results <- epimutacions::epimutations(case_samples, control_samples, method = "manova")
+res <- epimutacions::plot_epimutations(as.data.frame(results[1,]),
+data,
+genes_annot = T)
+res
+res$grobs
+res$grobs[[1]]
+plot(res$grobs[[1]])
+plot(res$grobs[[2]])
+res$grobs[[2]]
+plot(res$grobs[[2]])
+View(res)
+grid::grid.draw(res$grobs[[1]])
+grid::grid.draw(res$grobs[[2]])
+# Set options here
+options(golem.app.prod = FALSE) # TRUE = production mode, FALSE = development mode
+# Comment this if you don't want the app to be served on a random port
+options(shiny.port = httpuv::randomPort())
+# Detach all loaded packages and clean your environment
+golem::detach_all_attached()
+# rm(list=ls(all.names = TRUE))
+# Document and reload your package
+golem::document_and_reload()
+# Run the application
+run_app()
+res
+print(res)
+grid::grid.draw(res)
+# Set options here
+options(golem.app.prod = FALSE) # TRUE = production mode, FALSE = development mode
+# Comment this if you don't want the app to be served on a random port
+options(shiny.port = httpuv::randomPort())
+# Detach all loaded packages and clean your environment
+golem::detach_all_attached()
+# rm(list=ls(all.names = TRUE))
+# Document and reload your package
+golem::document_and_reload()
+# Run the application
+run_app()
+plot
+p2 <- grid::grid.grabExpr(Gviz::plotTracks(list(ideo_track,
+tracks_Highlight),
+from = from,
+to = to, add = TRUE))
+View(p2)
+plot(p2)
+plot(plot)
+cowplot::draw_grob
+install.packages("cowplot")
+cowplot::draw_grob(plot)
+cowplot::draw_grob(p2)
+cowplot::ggdraw() + cowplot::draw_grob(p2)
+dev.off()
+cowplot::ggdraw() + cowplot::draw_grob(p2)
+cowplot::ggdraw() + cowplot::draw_grob(plot)
+View(plot)
+cowplot::plot_grid(plot, cowplot::ggdraw() + cowplot::draw_grob(p2))
+cowplot::plot_grid(plot, cowplot::ggdraw() + cowplot::draw_grob(p2), ncol = 1)
+usethis::use_package( "cowplot" )
+# Set options here
+options(golem.app.prod = FALSE) # TRUE = production mode, FALSE = development mode
+# Comment this if you don't want the app to be served on a random port
+options(shiny.port = httpuv::randomPort())
+# Detach all loaded packages and clean your environment
+golem::detach_all_attached()
+# rm(list=ls(all.names = TRUE))
+# Document and reload your package
+golem::document_and_reload()
+# Run the application
+run_app()
+plot
+# Set options here
+options(golem.app.prod = FALSE) # TRUE = production mode, FALSE = development mode
+# Comment this if you don't want the app to be served on a random port
+options(shiny.port = httpuv::randomPort())
+# Detach all loaded packages and clean your environment
+golem::detach_all_attached()
+# rm(list=ls(all.names = TRUE))
+# Document and reload your package
+golem::document_and_reload()
+# Run the application
+run_app()
+# Set options here
+options(golem.app.prod = FALSE) # TRUE = production mode, FALSE = development mode
+# Comment this if you don't want the app to be served on a random port
+options(shiny.port = httpuv::randomPort())
+# Detach all loaded packages and clean your environment
+golem::detach_all_attached()
+# rm(list=ls(all.names = TRUE))
+# Document and reload your package
+golem::document_and_reload()
+# Run the application
+run_app()
+usethis::use_package( "cowplot" )
+# Set options here
+options(golem.app.prod = FALSE) # TRUE = production mode, FALSE = development mode
+# Comment this if you don't want the app to be served on a random port
+options(shiny.port = httpuv::randomPort())
+# Detach all loaded packages and clean your environment
+golem::detach_all_attached()
+# rm(list=ls(all.names = TRUE))
+# Document and reload your package
+golem::document_and_reload()
+# Run the application
+run_app()
+?AnnotationDbi::mapIds
+# Set options here
+options(golem.app.prod = FALSE) # TRUE = production mode, FALSE = development mode
+# Comment this if you don't want the app to be served on a random port
+options(shiny.port = httpuv::randomPort())
+# Detach all loaded packages and clean your environment
+golem::detach_all_attached()
+# rm(list=ls(all.names = TRUE))
+# Document and reload your package
+golem::document_and_reload()
+# Run the application
+run_app()
+annotation <- UCSC_regulation(genome,
+dmr$seqnames,
+from,
+to)
+genome
+tracks_Highlight <- Gviz::HighlightTrack(trackList =
+list(genome_track,
+gene_track,
+annotation$cpgIslands,
+annotation$H3K4Me3,
+annotation$H3K27Ac,
+annotation$H3K27Me3),
+start = dmr$start,
+end = dmr$end,
+chromosome = dmr$seqnames,
+col = "#7EA577",
+fill = "#C6D7C3",
+alpha = 0.4,
+inBackground = FALSE)

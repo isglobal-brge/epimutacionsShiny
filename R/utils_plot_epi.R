@@ -73,12 +73,12 @@ plot_epimutations <- function(dmr,
                               regulation = FALSE,
                               from = NULL,
                               to = NULL){
-
+  
   # Identify type of input and extract required data:
   #	* Input parameters: class, not null (if requered), nrow/ncols...
   #	* sample's classification
   #	* feature annotation
-
+  
   ## NULL arguments
   if(is.null(dmr)){
     stop("The argument 'dmr' must be introduced")
@@ -110,81 +110,70 @@ plot_epimutations <- function(dmr,
       stop("The value of argument 'from' must be smaller than 'to'")
     }
   }
-
+  
   if (!requireNamespace("grDevices"))
     stop("'grDevices' package not avaibale")
-
-
+  
+  
   # DMR column names must be always
   # the same (set the common column names)
   # dmr  <- cols_names(dmr, cpg_ids_col = TRUE)  #epi_plot
-
+  
   # Set 'from' and 'to' arguments value
   if(is.null(from) & is.null(to)){
     from <- dmr$start[1] - 1000
     to <- dmr$end[1] + 1000
   }
-
+  
   #Generate GenomicRanges object to contain in the same object:
   ## * Genomic ranges of each CpG in the DMR
   ## * Beta values
   gr <- create_GRanges_class(methy, dmr[,"cpg_ids"][1]) #epi_plot
   betas_sd_mean <- betas_sd_mean(gr) #epi_plot
-
-  #Generate variables in 'beta_values' data frame containing:
-  # * status: case sample name/'control'
-  # * color: 'red' for case sample and 'black' for control sample
-  # * lines: 'longdash' for controls and
-  #          'solid' for case and population mean
-
-  status <- ifelse(betas_sd_mean$beta_values$variable %in% dmr$sample,
-                   dmr$sample,
-                   "control")
-  betas_sd_mean$beta_values$status <- status
-  rm(status)
+  `%notin%` <- Negate(`%in%`)
+  
+  betas_sd_mean$beta_values$variable <- as.character(betas_sd_mean$beta_values$variable)
+  betas_sd_mean$beta_values$status <- betas_sd_mean$beta_values$variable
+  betas_sd_mean$beta_values[betas_sd_mean$beta_values$status %notin% dmr$sample, "status"] <- "control"
+  
   lines <- ifelse(betas_sd_mean$beta_values$status == "control",
                   "longdash","solid")
   betas_sd_mean$beta_values$lines <- lines
   rm(lines)
+  
+  # colors <- plyr::mapvalues(betas_sd_mean$beta_values$status, c("control"), c("black"))
+  # colors <- plyr::mapvalues(colors,
+  #                           dmr$sample, 
+  #                           palette.colors(length(dmr$sample)+1, palette = "ggplot2")[-1])
+  
   colors <- c("control" = "black",
-              "mean" = "darkblue")#,
-              # "red")
-  # names(colors)[3] <- dmr$sample
-
+              "mean" = "darkblue",  palette.colors(length(dmr$sample)+1, palette = "ggplot2")[-1])
+  names(colors)[-c(1,2)] <- dmr$sample
+  
   #Generate a variable with the CpGs names
   variable <- betas_sd_mean$beta_values$variable
   names <- betas_sd_mean$beta_values[variable == dmr$sample,]
   rm(variable)
   names$id <- names(gr)
+  betas_sd_mean$beta_values$status <- as.factor(betas_sd_mean$beta_values$status)
   
   #Plot epimutations
-  if(length(dmr$sample) < 2){
-    plot_betas <- ggplot2::ggplot() +
-      ggplot2::geom_line(data = betas_sd_mean$beta_values,
-                         ggplot2::aes(x = start,
-                                      y = value,
-                                      group = variable,
-                                      color = status),
-                         linetype = betas_sd_mean$beta_values$lines) +
-      ggplot2::geom_point(data = betas_sd_mean$beta_values,
-                          ggplot2::aes(x = start,
-                                       y = value,
-                                       group = variable,
-                                       color = status))
-  } else {
-    plot_betas <- ggplot2::ggplot() +
-      ggplot2::geom_line(data = betas_sd_mean$beta_values,
-                         ggplot2::aes(x = start,
-                                      y = value,
-                                      color = status),
-                         linetype = betas_sd_mean$beta_values$lines) +
-      ggplot2::geom_point(data = betas_sd_mean$beta_values,
-                          ggplot2::aes(x = start,
-                                       y = value,
-                                       color = status))
-  }
   
-                                     
+  plot_betas <- ggplot2::ggplot() +
+    ggplot2::geom_line(data = betas_sd_mean$beta_values,
+                       ggplot2::aes(x = start,
+                                    y = value,
+                                    group = variable,
+                                    color = status
+                       ),
+                       linetype = betas_sd_mean$beta_values$lines) +
+    ggplot2::geom_point(data = betas_sd_mean$beta_values,
+                        ggplot2::aes(x = start,
+                                     y = value,
+                                     group = variable,
+                                     color = status))
+  
+  
   plot_sd <- plot_betas +
     ggplot2::geom_ribbon(data = betas_sd_mean$sd,
                          ggplot2::aes(x = start,
@@ -201,7 +190,7 @@ plot_epimutations <- function(dmr,
                                       ymin = sd_1_lower,
                                       ymax = sd_1_upper),
                          fill = "gray98", alpha = 0.4)
-
+  
   plot_mean <-  plot_sd +
     ggplot2::geom_line(data = betas_sd_mean$mean,
                        ggplot2::aes(x = start,
@@ -210,7 +199,7 @@ plot_epimutations <- function(dmr,
     ggplot2::geom_point(data = betas_sd_mean$mean,
                         ggplot2::aes(x = start, y = mean),
                         show.legend = TRUE)
-
+  
   if (requireNamespace("ggrepel", quietly = TRUE)) {
     plot_cpg_names <- plot_mean +
       ggrepel::geom_text_repel() +
@@ -222,11 +211,10 @@ plot_epimutations <- function(dmr,
   } else {
     stop("'ggrepel' package not avaibale")
   }
-
-
+  
   plot <- plot_cpg_names +
     ggplot2::lims(y = c(0,1)) +
-    # ggplot2::scale_colour_manual(name = "Status", values = colors) +
+    ggplot2::scale_colour_manual(name = "Status", values = colors) +
     ggplot2::theme_bw() +
     ggplot2::ggtitle(paste0(dmr$sample, collapse = ", ")) +
     # ggplot2::ggtitle(paste0(dmr$sample,": ",
@@ -236,7 +224,7 @@ plot_epimutations <- function(dmr,
     ggplot2::theme(plot.title = ggplot2::element_text(hjust = 0.5)) +
     ggplot2::labs(x = "Coordinates") +
     ggplot2::labs(y = "DNA methylation level")
-
+  
   #Plot gene annotations
   if (requireNamespace("Gviz", quietly = TRUE)){
     if(genes_annot == TRUE | regulation == TRUE){
@@ -263,7 +251,7 @@ plot_epimutations <- function(dmr,
                                                  inBackground = FALSE)
       }
       if(regulation == TRUE){
-
+        
         sz <- to - from
         if(sz > 200000){
           stop("The region is too large (> 200kb)
@@ -273,7 +261,7 @@ plot_epimutations <- function(dmr,
                                       dmr$chromosome[1],
                                       from,
                                       to)
-
+        
         if(genome ==  "hg19"){
           tracks_Highlight <- Gviz::HighlightTrack(trackList =
                                                      list(genome_track,
@@ -289,7 +277,7 @@ plot_epimutations <- function(dmr,
                                                    fill = "#C6D7C3",
                                                    alpha = 0.4,
                                                    inBackground = FALSE)
-
+          
         }else{
           tracks_Highlight <- Gviz::HighlightTrack(trackList =
                                                      list(genome_track,
@@ -305,7 +293,7 @@ plot_epimutations <- function(dmr,
                                                    alpha = 0.4,
                                                    inBackground = FALSE)
         }
-
+        
       }
     }
     if(genes_annot == TRUE |  regulation == TRUE){
@@ -320,7 +308,7 @@ plot_epimutations <- function(dmr,
       } else {
         stop("'grid' package not avaibale")
       }
-
+      
       if (requireNamespace("gridExtra", quietly = TRUE)) {
         return(cowplot::plot_grid(plot, cowplot::ggdraw() + cowplot::draw_grob(p2), ncol = 1))
         # gridExtra::grid.arrange(grobs = list(p1,p2), row = 2)
@@ -331,7 +319,7 @@ plot_epimutations <- function(dmr,
       plot
     }
   }else{
-
+    
   }
 }
 #
